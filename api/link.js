@@ -1,7 +1,7 @@
 const axios = require('axios');
 const cheerio = require('cheerio')
 
-module.exports = (req, res) => {
+module.exports = async (req, res) => {
   const filter = req.headers.url
 
   try {
