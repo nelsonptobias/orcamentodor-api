@@ -1,0 +1,20 @@
+{
+  "name": "orcamentador-api",
+  "version": "1.0.0",
+  "description": "dinheiro dinheiro",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.21.0",
+    "cheerio": "^1.0.0-rc.3",
+    "cors": "^2.8.5",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "mocha": "^6.2.2"
+  }
+}
