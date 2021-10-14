@@ -1,21 +1,21 @@
 const axios = require('axios');
 const cheerio = require('cheerio')
-
+const fs = require('fs')
 
 const getDadosLink = async (req, res) => {
   const filter = req.headers.url
 
   try {
-    const { data } = await axios(filter);
+    const { data } = await axios(filter);  
+    fs.writeFileSync('./teste', data)
+
     const $ = cheerio.load(data)
 
-    const imgProduto = $('.slider').find('img').attr('src')
-    const nomeProduto = $('.slider').find('img').attr('title')
+    const imgProduto = $('#carouselDetails').find('figure').find('img').attr('src') 
+    const nomeProduto = $('section').find('h1').text()
+    
 
-    let avista = $('.preco_desconto_avista-cm').text()
-    if (avista === '') {
-      avista = $('.preco_desconto').find('strong').text()
-    }
+    let avista = $('#blocoValores').find('h4').text() 
 
     console.log('preco a vista ' + avista)
     return res.send(
