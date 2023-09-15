@@ -11,20 +11,19 @@ const getDadosLink = async (req, res) => {
 
     const $ = cheerio.load(data)
 
-    const imgProduto = $('#carouselDetails').find('figure').find('img').attr('src') 
+    const imgProduto = $('meta[name="twitter:image"]').attr('content')
     const nomeProduto = $('section').find('h1').text()
     
 
     let avista = $('#blocoValores').find('h4').text() 
 
-    console.log('preco a vista ' + avista)
-    return res.send(
-      {
-        nome: nomeProduto,
-        imagem: imgProduto,
-        precoAvista: avista
-      }
-    )
+    const response = {
+      nome: nomeProduto,
+      imagem: imgProduto,
+      precoAvista: avista}
+
+    console.log('request response ' + JSON.stringify(response))
+    return res.send(response)
   } catch (error) {
     return res.send({
       erro: error.message
